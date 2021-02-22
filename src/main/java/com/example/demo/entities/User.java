@@ -23,14 +23,8 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	 private Long id;
-	@Column(name="firstName")
-	 private String firstName;
-	@Column(name="last_name")
-	private String lastName;
-	@Column(name="age")
-	 private Integer age;
-	@Column(name="nif")	
-	private String nif;
+	
+	
 	@Column(name="email")
 	private String email;
 	@Column (name="password")
@@ -46,13 +40,10 @@ public class User implements Serializable {
 
 	public User(){}
 
-	public User( String firstName, String lastName, Integer age, String nif, String email,
-			String password) {
+	public User( String email,String password)
+			 {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-		this.nif = nif;
+		
 		this.email = email;
 		this.password = password;
 	}
@@ -78,52 +69,6 @@ public class User implements Serializable {
 	}
 
 
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-
-
-	public Integer getAge() {
-		return age;
-	}
-
-
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-
-
-	public String getNif() {
-		return nif;
-	}
-
-
-
-	public void setNif(String nif) {
-		this.nif = nif;
-	}
 
 
 
