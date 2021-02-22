@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -34,10 +37,8 @@ public class User implements Serializable {
 	
 	@Column(name="rol")
 	private String rol;
-	@ManyToOne
-	@JoinColumn(name = "id_cinema")
-	private Cinema cinema;
-
+	@ManyToMany(mappedBy="user")
+	private List<Cinema> cinema = new ArrayList<>();
 	public User(){}
 
 	public User( String firstName, String lastName, Integer age, String nif, String email,
