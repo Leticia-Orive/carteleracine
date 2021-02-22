@@ -26,9 +26,7 @@ public class Cinema implements Serializable{
 	private Long id;
 	
 	private String name;
-	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private User user;
+	
 
 	@OneToOne
 	@JoinColumn(name="id_direccion")
@@ -40,7 +38,7 @@ public class Cinema implements Serializable{
 	
 	@ManyToMany(mappedBy="cinemas")
 	private List<Movie> movies = new ArrayList<>();
-	
+	private List<User> user =new ArrayList<>();
 	public Cinema() {}
 
 	public Long getId() {
