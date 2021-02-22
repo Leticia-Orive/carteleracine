@@ -1,4 +1,4 @@
-package com.example.frmo.controller;
+package com.example.demo.controller;
 
 public class UserController {
 

@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Direction implements Serializable{
 	private String street;
 	
 	private String city;
+	@OneToOne
+	@JoinColumn(name="id_cinema")
+	private Cinema cinema;
 	
 	public Direction() {}
 

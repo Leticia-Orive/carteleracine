@@ -1,4 +1,4 @@
-package com.example.frmo.controller;
+package com.example.demo.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +13,6 @@ import com.example.demo.repository.UserRepository;
 
 @Controller
 public class LoginController {
-	private UserRepository userRepository;
 	@GetMapping("/login")
 	public String getLogin(Model model) {
 	model.addAttribute(new User());

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,7 +34,10 @@ public class User implements Serializable {
 	
 	@Column(name="rol")
 	private String rol;
-	
+	@ManyToOne
+	@JoinColumn(name = "id_cinema")
+	private Cinema cinema;
+
 	public User(){}
 
 	public User( String firstName, String lastName, Integer age, String nif, String email,
@@ -45,7 +50,9 @@ public class User implements Serializable {
 		this.email = email;
 		this.password = password;
 	}
-
+	
+	
+	
 	public String getRol() {
 		return rol;
 	}
