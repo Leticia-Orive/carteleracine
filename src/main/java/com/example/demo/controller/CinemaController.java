@@ -32,18 +32,22 @@ public class CinemaController {
 		return "cinema-list";
 	}
 	
+
 	@GetMapping("/cinemas/{id}/view")
 	public String verCinema(@PathVariable Long id, Model model) {
 		if(id == null) // 1. se comprueba que el id no sea nulo
-			return "redirect:/cinemas";
+			//return "redirect:/cinemas";
+			return "redirect:/movies";
 		
 		Optional<Cinema> cinemaOpt = cinemaRepository.findById(id);
 		if (cinemaOpt.isPresent()) { // 2. se comprueba que existe un cinema para ese id
 			model.addAttribute("cinema", cinemaOpt.get());
-			return "cinema-view";
+			//return "cinema-view";
+			return "movies-view";
 		}
 		model.addAttribute("error", "No existe el cinema solicitado");
-		return "redirect:/cinemas";
+		//return "redirect:/cinemas";
+		return "redirect:/movies";
 	}
 	
 	@GetMapping("/cinemas/{id}/edit")
