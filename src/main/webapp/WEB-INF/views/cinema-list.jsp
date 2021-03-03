@@ -6,22 +6,37 @@
 <head>
 <title>Cinemas List | Awesome App</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="css/cinema.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="navbar.jsp"></jsp:include>
 	
 	<div class = "pt-5 container">
 		
 		<h1>Cinemas</h1>
 		<hr/>
 		
+		<c:choose>
+			<c:when test="${user.rol =='admin'}">
+				Bienvenido <c:out value="${user.email}"></c:out> eres admin
+			</c:when>
+			<c:when test="${user.rol == 'normal' }">
+				Bienvenido <c:out value="${user.email}"></c:out> eres usuario normal sin permisos
+			</c:when>
+			<c:otherwise>
+
+			</c:otherwise>
+		</c:choose>
+		
 		<p>${NOTIFICATION}</p>
 		
 <!-- 		ADMIN PUEDE CREAR CINEMAS -->
 
 		<p>
+		 <c:if test="${user.rol == 'admin' }">
 			<a class = "btn btn-primary" href="${pageContext.request.contextPath}/cinemas/new">ADD CINEMA</a>
-			<a class = "btn btn-danger" href="${pageContext.request.contextPath}/cinemas/delete/all">DELETE CINEMAS</a>
+			 </c:if>
 			
 		</p>
 	
@@ -39,18 +54,18 @@
 				<th>Actions</th>
 			</tr>
 			
-			<c:forEach items="${movies}" var="movie">
+			<c:forEach items="${cinemas}" var="cinema">
 			
 				<tr>
-					<td>${movie.name}</td>
-					<td>${movie.direction.postalCode}</td>
-					<td>${movie.schedule}</td>
-					<td>${movie.rooms}</td>
-					
+					<td>${cinema.name}</td>
+					<td>${cinema.postalCode}</td>
+					<td>${cinema.schedule}</td>
+					<td>${cinema.rooms}</td>
+							
 					<td> 
-						<a class="btn btn-info" href = "${pageContext.request.contextPath}/cinemas/${movie.id}/view">Ver</a> 
-						<a class="btn btn-success" href = "${pageContext.request.contextPath}/cinemas/${movie.id}/edit">Editar</a> 
-						<a class="btn btn-danger" href = "${pageContext.request.contextPath}/cinemas/${movie.id}/delete">Borrar</a>
+						<a class="btn btn-info" href = "${pageContext.request.contextPath}/cinemas/${cinema.id}/view">Ver</a> 
+						<a class="btn btn-success" href = "${pageContext.request.contextPath}/cinemas/${cinema.id}/edit">Editar</a> 
+						<a class="btn btn-danger" href = "${pageContext.request.contextPath}/cinemas/${cinema.id}/delete">Borrar</a>
 						 
 					</td>
 				</tr>
@@ -60,7 +75,7 @@
 		</table>
 		
 	</div>
-
+<jsp:include page="footer.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
