@@ -18,11 +18,9 @@
        <c:if test="${user.rol == 'admin' }">
       <a class="nav-item nav-link" href="${pageContext.request.contextPath}/movies">Movies</a>
       </c:if>
+      <c:if test="${user.rol != null}">
             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+      </c:if>
     </div>
-    <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
   </div>
 </nav>

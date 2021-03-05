@@ -5,10 +5,11 @@
 <html>
 <head>
 <title>Movies List | CinemaApp</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/movie.css">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/movie.css">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
@@ -35,11 +36,8 @@
 <!-- 		ADMIN PUEDE CREAR CINEMAS -->
 
 		<p>
-		 <c:if test="${user.rol == 'admin' }">
-			<a class = "btn btn-primary" href="${pageContext.request.contextPath}/movies/new">ADD MOVIES</a>
-			 </c:if>
-			
-		
+			<a class = "btn btn-primary" href="${pageContext.request.contextPath}/movies/new">ADD 	MOVIES</a>
+			<a class = "btn btn-danger" href="${pageContext.request.contextPath}/movies/delete/all">DELETE MOVIES</a>
 			
 		</p>
 	
